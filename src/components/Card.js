@@ -11,7 +11,6 @@ export default function Card({ name, text }) {
 
 const Article = styled.article`
   padding: 20px;
-  margin-top: 20px;
   box-shadow: 0 0 10px #ffb896;
   border-radius: 5px;
 `
