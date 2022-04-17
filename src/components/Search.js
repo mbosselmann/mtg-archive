@@ -4,7 +4,9 @@ import styled from 'styled-components'
 export default function Search({ getCard }) {
   function handleSubmit(event) {
     event.preventDefault()
-    getCard()
+    const form = event.target
+    const { name } = form.elements
+    getCard(name.value)
   }
 
   return (
