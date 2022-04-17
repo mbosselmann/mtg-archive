@@ -1,7 +1,7 @@
 import Card from './components/Card'
-import Button from './components/Button'
 import { useState } from 'react'
 import styled from 'styled-components'
+import Search from './components/Search'
 
 function App() {
   const [data, setData] = useState([])
@@ -26,7 +26,7 @@ function App() {
   return (
     <Flex>
       <h1>MTG Archive</h1>
-      <Button onClick={getCard}>Get Card</Button>
+      <Search getCard={getCard} />
       {data.map((entry, index) => (
         <Card key={index} name={entry.name} text={entry.text} />
       ))}
@@ -39,10 +39,11 @@ export default App
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  gap: 10px;
 
   h1 {
     text-align: center;
+    background-color: #2f4858;
+    color: #fff;
+    padding-bottom: 10px;
   }
 `
