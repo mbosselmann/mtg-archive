@@ -23,6 +23,7 @@ function App() {
         id: card.id,
         name: card.name,
         text: card.text,
+        image: card.imageUrl,
       }
       return newCard
     })
@@ -33,9 +34,20 @@ function App() {
     <Flex>
       <h1>MTG Archive</h1>
       <Search getCard={getCard} />
-      {data.map(entry => (
-        <Card key={entry.id} name={entry.name} text={entry.text} />
-      ))}
+      <List role="list">
+        {data.map(entry => {
+          if (entry.image) {
+            return (
+              <Card
+                key={entry.id}
+                name={entry.name}
+                text={entry.text}
+                image={entry.image}
+              />
+            )
+          }
+        })}
+      </List>
     </Flex>
   )
 }
@@ -52,4 +64,8 @@ const Flex = styled.div`
     color: #fff;
     padding: 10px 0;
   }
+`
+
+const List = styled.ul`
+  padding-left: 0;
 `
