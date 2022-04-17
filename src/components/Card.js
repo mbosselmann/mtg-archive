@@ -13,4 +13,5 @@ const Article = styled.article`
   padding: 20px;
   box-shadow: 0 0 10px #ffb896;
   border-radius: 5px;
+  margin: 20px;
 `
