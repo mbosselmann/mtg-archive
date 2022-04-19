@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import Colors from './Colors'
 
 export default function CardDetails({ onFindCard, card }) {
   const { id } = useParams()
@@ -30,13 +31,7 @@ export default function CardDetails({ onFindCard, card }) {
       <Img src={image} alt="Card" />
       <Wrapper>
         <Title>{name}</Title>
-        {colors && (
-          <ColorsContainer>
-            {colors.map((color, index) => (
-              <Color key={index} color={color}></Color>
-            ))}
-          </ColorsContainer>
-        )}
+        {colors && <Colors colors={colors} />}
         <SubTitle color={colors ? colors[0] : ''}>
           About all Kinds of Types:
         </SubTitle>
@@ -151,21 +146,4 @@ const Img = styled.img`
 const Term = styled.dt`
   font-weight: bold;
   width: 100%;
-`
-
-const ColorsContainer = styled.div`
-  display: flex;
-  gap: 10px;
-  padding: 0 20px;
-`
-
-const Color = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
-  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
-  ${props => props.color === 'Black' && 'background-color: rgb(21, 11, 0)'};
 `

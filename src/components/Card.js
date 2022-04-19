@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Colors from './Colors'
 
 export default function Card({ name, id, image, colors }) {
   return (
     <Article color={colors ? colors[0] : ''}>
       {colors && (
         <ColorsContainer>
-          {colors.map((color, index) => (
-            <Color key={index} color={color}></Color>
-          ))}
+          <Colors colors={colors} />
         </ColorsContainer>
       )}
       <h2>{name}</h2>
@@ -45,32 +44,7 @@ const Article = styled.li`
   }
 `
 const ColorsContainer = styled.div`
-  display: flex;
-  gap: 10px;
   margin-top: -25px;
-  margin-left: 20px;
-`
-
-const Color = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
-  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
-  ${props => props.color === 'Black' && 'background-color: rgb(21, 11, 0)'};
-`
-const Flex = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 20px;
-  align-items: flex-start;
-`
-
-const Term = styled.dt`
-  font-weight: bold;
-  width: 100%;
 `
 
 const DetailsLink = styled(Link)`

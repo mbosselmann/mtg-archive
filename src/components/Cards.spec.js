@@ -12,11 +12,6 @@ describe('Card', () => {
             'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409741&type=card'
           }
           colors={['Red', 'Blue']}
-          originalType={'Archbishop Oink'}
-          subtypes={['Pig', 'Archbishop']}
-          supertypes={['Legendary']}
-          type={'Legendary Pig'}
-          types={['Creature']}
         />
       </MemoryRouter>
     )
@@ -26,9 +21,6 @@ describe('Card', () => {
 
     const heading = screen.getByRole('heading', { name: 'Archbishop Oink' })
     expect(heading).toBeInTheDocument()
-
-    const type = screen.getByText('Legendary Pig')
-    expect(type).toBeInTheDocument()
 
     const image = screen.getByRole('img')
     expect(image).toBeInTheDocument()
