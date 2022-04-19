@@ -8,7 +8,6 @@ import DetailsPage from './pages/DetailsPage'
 function App() {
   const [data, setData] = useState([])
   const [card, setCard] = useState({})
-  console.log(card)
 
   const { pathname } = useLocation()
   const navigate = useNavigate()

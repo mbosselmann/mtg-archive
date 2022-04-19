@@ -15,8 +15,9 @@ export default function CardDetails({ onFindCard, card }) {
     image,
     colors,
     text,
+    rarity,
+    power,
   } = card
-  console.log(id)
 
   useEffect(() => {
     onFindCard(id)
@@ -28,10 +29,18 @@ export default function CardDetails({ onFindCard, card }) {
       <Wrapper>
         <Title>{name}</Title>
         {colors && <Colors colors={colors} />}
+        <List role="list">
+          <li>
+            <span>Rarity:</span> {rarity}
+          </li>
+          <li>
+            <span>Power:</span> {power}
+          </li>
+        </List>
         <SubTitle color={colors ? colors[0] : ''}>
           About all Kinds of Types:
         </SubTitle>
-        <List>
+        <DescriptionList>
           <Flex>
             <Term>Type:</Term>
             <dd>{type}</dd>
@@ -64,7 +73,7 @@ export default function CardDetails({ onFindCard, card }) {
               ))}
             </Flex>
           )}
-        </List>
+        </DescriptionList>
         <SubTitle color={colors ? colors[0] : ''}>Description:</SubTitle>
         <p>{text}</p>
       </Wrapper>
@@ -83,8 +92,36 @@ const Container = styled.div`
   ${props => props.color === 'Black' && 'background-color: rgb(166, 159, 157)'};
 `
 
-const Title = styled.h2`
+const Wrapper = styled.div`
   background-color: #fff;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  p {
+    padding: 8px 20px 20px;
+  }
+`
+
+const Img = styled.img`
+  display: block;
+  padding: 30px 60px;
+`
+
+const Title = styled.h2`
+  padding: 8px 20px;
+`
+
+const List = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  span {
+    font-weight: bold;
+    margin-right: 10px;
+  }
 `
 
 const SubTitle = styled.h3`
@@ -97,15 +134,10 @@ const SubTitle = styled.h3`
   ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
   ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
 `
-const Wrapper = styled.div`
+
+const DescriptionList = styled.dl`
   background-color: #fff;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-`
-const List = styled.dl`
-  background-color: #fff;
-  padding: 20px;
+  padding: 8px 20px;
 `
 
 const Flex = styled.div`
@@ -113,11 +145,6 @@ const Flex = styled.div`
   flex-wrap: wrap;
   gap: 0 20px;
   align-items: flex-start;
-`
-
-const Img = styled.img`
-  display: block;
-  padding: 30px 60px;
 `
 
 const Term = styled.dt`
