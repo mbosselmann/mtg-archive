@@ -15,7 +15,7 @@ export default function Card({
   types,
 }) {
   return (
-    <Article>
+    <Article color={colors ? colors[0] : ''}>
       {colors && (
         <ColorsContainer>
           {colors.map((color, index) => (
@@ -60,18 +60,26 @@ export default function Card({
         )}
       </dl>
       <img src={image} alt="card" />
-      <MoreButton type="button">More »</MoreButton>
+      <MoreButton type="button" color={colors ? colors[0] : ''}>
+        More »
+      </MoreButton>
     </Article>
   )
 }
 
 const Article = styled.li`
   list-style: none;
-  box-shadow: 0 0 10px #ffb896;
+  box-shadow: 0 0 10px rgb(21, 11, 0);
   border-radius: 5px;
   margin: 40px 20px;
   display: flex;
   flex-direction: column;
+  ${props =>
+    props.color === 'White' && 'box-shadow: 0 0 10px rgb(166, 159, 157)'};
+  ${props => props.color === 'Red' && 'box-shadow: 0 0 10px rgb(211, 32, 42)'};
+  ${props =>
+    props.color === 'Blue' && 'box-shadow: 0 0 10px rgb(14, 104, 171)'};
+  ${props => props.color === 'Green' && 'box-shadow: 0 0 10px rgb(0, 115, 62)'};
 
   h2,
   dl,
@@ -94,8 +102,11 @@ const Color = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: ${props => props.color || ''};
-  ${props => props.color === 'White' && 'border: 1px solid #000'}
+  ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
+  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
+  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
+  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
+  ${props => props.color === 'Black' && 'background-color: rgb(21, 11, 0)'};
 `
 const Flex = styled.div`
   display: flex;
@@ -113,5 +124,9 @@ const MoreButton = styled(Button)`
   border-radius: 0 0 5px 5px;
   font-weight: bold;
   font-size: 1.5rem;
-  background: #b8819c;
+  ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
+  ${props => props.color === 'White' && 'color: rgb(21, 11, 0)'};
+  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
+  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
+  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
 `

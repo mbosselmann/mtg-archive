@@ -11,7 +11,7 @@ export default function Search({ getCard }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <label htmlFor="name">Enter Name of Card for Search</label>
+      <label htmlFor="name">Enter Name of Card</label>
       <Flex>
         <Input type="text" id="name" name="name" />
         <SearchButton type="submit">Search</SearchButton>
@@ -21,7 +21,7 @@ export default function Search({ getCard }) {
 }
 
 const Form = styled.form`
-  background-color: papayawhip;
+  background-color: #e2dcd5;
   padding: 20px;
   margin-bottom: 10px;
 
@@ -36,6 +36,7 @@ const Flex = styled.div`
 const SearchButton = styled(Button)`
   border-radius: 0 8px 8px 0;
   flex-grow: 1;
+  font-weight: bold;
 `
 const Input = styled.input`
   padding: 8px;
@@ -44,7 +45,7 @@ const Input = styled.input`
   flex-grow: 2;
 
   &:focus {
-    outline: medium solid #2f4858;
+    outline: medium solid rgb(21, 11, 0);
     outline-offset: -3px;
   }
 `

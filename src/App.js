@@ -90,7 +90,7 @@ const Flex = styled.div`
 
   h1 {
     text-align: center;
-    background-color: #2f4858;
+    background-color: rgb(21, 11, 0);
     color: #fff;
     padding: 10px 0;
   }
