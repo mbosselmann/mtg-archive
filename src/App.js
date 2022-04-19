@@ -13,7 +13,6 @@ function App() {
       `https://api.magicthegathering.io/v1/cards?name=${name}`
     )
     const data = await response.json()
-    console.log(data.cards)
     handleData(data.cards)
   }
 
@@ -24,6 +23,14 @@ function App() {
         name: card.name,
         text: card.text,
         image: card.imageUrl,
+        colors: card.colors,
+        originalType: card.originalType,
+        power: card.power,
+        subtypes: card.subtypes,
+        supertypes: card.supertypes,
+        type: card.type,
+        rarity: card.rarity,
+        types: card.types,
       }
       return newCard
     })
@@ -35,18 +42,41 @@ function App() {
       <h1>MTG Archive</h1>
       <Search getCard={getCard} />
       <List role="list">
-        {data.map(entry => {
-          if (entry.image) {
-            return (
-              <Card
-                key={entry.id}
-                name={entry.name}
-                text={entry.text}
-                image={entry.image}
-              />
-            )
+        {data.map(
+          ({
+            id,
+            name,
+            text,
+            image,
+            colors,
+            originalType,
+            power,
+            subtypes,
+            supertypes,
+            type,
+            rarity,
+            types,
+          }) => {
+            if (image) {
+              return (
+                <Card
+                  key={id}
+                  name={name}
+                  text={text}
+                  image={image}
+                  colors={colors}
+                  originalType={originalType}
+                  power={power}
+                  subtypes={subtypes}
+                  supertypes={supertypes}
+                  type={type}
+                  rarity={rarity}
+                  types={types}
+                />
+              )
+            }
           }
-        })}
+        )}
       </List>
     </Flex>
   )
