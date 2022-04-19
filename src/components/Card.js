@@ -1,18 +1,14 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import Button from './Button'
 
 export default function Card({
   name,
-  text,
   image,
   colors,
   originalType,
-  power,
   subtypes,
   supertypes,
   type,
-  rarity,
   types,
 }) {
   return (

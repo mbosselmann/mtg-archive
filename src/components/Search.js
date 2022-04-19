@@ -7,13 +7,14 @@ export default function Search({ getCard }) {
     const form = event.target
     const { name } = form.elements
     getCard(name.value)
+    form.reset()
   }
 
   return (
     <Form onSubmit={handleSubmit}>
       <label htmlFor="name">Enter Name of Card</label>
       <Flex>
-        <Input type="text" id="name" name="name" />
+        <Input type="text" id="name" name="name" required />
         <SearchButton type="submit">Search</SearchButton>
       </Flex>
     </Form>
