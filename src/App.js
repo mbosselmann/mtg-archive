@@ -1,7 +1,8 @@
-import Card from './components/Card'
+import Navigation from './components/Navigation'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Search from './components/Search'
+import { Routes, Route } from 'react-router-dom'
+import SearchPage from './pages/SearchPage'
 
 function App() {
   const [data, setData] = useState([])
@@ -38,41 +39,13 @@ function App() {
   }
 
   return (
-    <Flex>
-      <h1>MTG Archive</h1>
-      <Search getCard={getCard} />
-      <List role="list">
-        {data.map(
-          ({
-            id,
-            name,
-            text,
-            image,
-            colors,
-            originalType,
-            power,
-            subtypes,
-            supertypes,
-            type,
-            rarity,
-            types,
-          }) => {
-            if (image) {
-              return (
-                <Card
-                  key={id}
-                  name={name}
-                  text={text}
-                  image={image}
-                  colors={colors}
-                  originalType={originalType}
-                  power={power}
-                  subtypes={subtypes}
-                  supertypes={supertypes}
-                  type={type}
-                  rarity={rarity}
-                  types={types}
-                />
+    <Grid>
+      <Title>MTG Archive</Title>
+      <Routes>
+        <Route
+          path="/search"
+          element={<SearchPage cards={data} getCard={getCard} />}
+        />
       </Routes>
       <Navigation />
     </Grid>
@@ -81,18 +54,16 @@ function App() {
 
 export default App
 
-const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  h1 {
-    text-align: center;
-    background-color: rgb(21, 11, 0);
-    color: #fff;
-    padding: 10px 0;
-  }
+const Grid = styled.div`
+  display: grid;
+  grid-template-rows: 3rem 7rem 1fr 5rem;
+  height: 100%;
 `
 
-const List = styled.ul`
-  padding-left: 0;
+const Title = styled.h1`
+  text-align: center;
+  background-color: rgb(21, 11, 0);
+  color: #fff;
+  position: sticky;
+  top: 0;
 `

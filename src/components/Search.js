@@ -24,6 +24,9 @@ const Form = styled.form`
   background-color: #e2dcd5;
   padding: 20px;
   margin-bottom: 10px;
+  position: sticky;
+  top: 3rem;
+  height: 7rem;
 
   label {
     padding-left: 5px;
