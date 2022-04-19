@@ -73,12 +73,9 @@ function App() {
                   rarity={rarity}
                   types={types}
                 />
-              )
-            }
-          }
-        )}
-      </List>
-    </Flex>
+      </Routes>
+      <Navigation />
+    </Grid>
   )
 }
 
