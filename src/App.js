@@ -91,6 +91,6 @@ const Grid = styled.div`
   ${props =>
     props.pathname === '/'
       ? 'grid-template-rows: 3rem 7rem 1fr 4rem;'
-      : 'grid-template-rows: 3rem 1fr 4rem;'}
+      : 'grid-template-rows: 3rem 3rem 1fr 4rem;'}
   height: 100%;
 `
