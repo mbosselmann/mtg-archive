@@ -56,7 +56,7 @@ export default App
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 3rem 7rem 1fr 5rem;
+  grid-template-rows: 3rem 7rem 1fr 4rem;
   height: 100%;
 `
 

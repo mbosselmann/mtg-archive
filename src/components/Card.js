@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Button from './Button'
 
@@ -60,9 +61,9 @@ export default function Card({
         )}
       </dl>
       <img src={image} alt="card" />
-      <MoreButton type="button" color={colors ? colors[0] : ''}>
+      <DetailsLink to="/" color={colors ? colors[0] : ''}>
         More »
-      </MoreButton>
+      </DetailsLink>
     </Article>
   )
 }
@@ -120,7 +121,13 @@ const Term = styled.dt`
   width: 100%;
 `
 
-const MoreButton = styled(Button)`
+const DetailsLink = styled(Link)`
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px;
+  background-color: rgb(21, 11, 0);
   border-radius: 0 0 5px 5px;
   font-weight: bold;
   font-size: 1.5rem;

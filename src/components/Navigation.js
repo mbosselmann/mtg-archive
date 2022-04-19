@@ -16,7 +16,7 @@ const Nav = styled.nav`
   display: flex;
   width: 100%;
   background-color: #e2dcd5;
-  height: 5rem;
+  height: 4rem;
 `
 
 const StyledLink = styled(NavLink)`
