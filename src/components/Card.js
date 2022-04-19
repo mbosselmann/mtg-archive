@@ -127,6 +127,7 @@ const DetailsLink = styled(Link)`
   text-decoration: none;
   color: #fff;
   padding: 8px;
+  text-transform: uppercase;
   background-color: rgb(21, 11, 0);
   border-radius: 0 0 5px 5px;
   font-weight: bold;
