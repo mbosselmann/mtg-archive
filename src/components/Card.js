@@ -1,16 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export default function Card({
-  name,
-  image,
-  colors,
-  originalType,
-  subtypes,
-  supertypes,
-  type,
-  types,
-}) {
+export default function Card({ name, id, image, colors }) {
   return (
     <Article color={colors ? colors[0] : ''}>
       {colors && (
@@ -21,43 +12,8 @@ export default function Card({
         </ColorsContainer>
       )}
       <h2>{name}</h2>
-      <dl>
-        <Flex>
-          <Term>Type:</Term>
-          <dd>{type}</dd>
-        </Flex>
-        <Flex>
-          <Term>Original Type:</Term>
-          <dd>{originalType}</dd>
-        </Flex>
-        {types && (
-          <Flex>
-            <Term>Types:</Term>
-            {types.map((type, index) => (
-              <dd key={index}>{type}</dd>
-            ))}
-          </Flex>
-        )}
-
-        {subtypes && (
-          <Flex>
-            <Term>Subtypes:</Term>
-            {subtypes.map((subtype, index) => (
-              <dd key={index}>{subtype}</dd>
-            ))}
-          </Flex>
-        )}
-        {supertypes && (
-          <Flex>
-            <Term>Supertypes:</Term>
-            {supertypes?.map((supertype, index) => (
-              <dd key={index}>{supertype}</dd>
-            ))}
-          </Flex>
-        )}
-      </dl>
       <img src={image} alt="card" />
-      <DetailsLink to="/" color={colors ? colors[0] : ''}>
+      <DetailsLink to={`/${id}`} color={colors ? colors[0] : ''}>
         More »
       </DetailsLink>
     </Article>
@@ -85,7 +41,7 @@ const Article = styled.li`
   }
 
   img {
-    padding: 20px 30px;
+    padding: 20px 50px;
   }
 `
 const ColorsContainer = styled.div`

@@ -5,8 +5,7 @@ import styled from 'styled-components'
 export default function Navigation() {
   return (
     <Nav>
-      <StyledLink to="/">Home</StyledLink>
-      <StyledLink to="/search">Search</StyledLink>
+      <StyledLink to="/">Search</StyledLink>
       <StyledLink to="/bookmarks">Bookmarks</StyledLink>
     </Nav>
   )

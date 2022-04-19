@@ -10,11 +10,9 @@ describe('Navigation', () => {
       </MemoryRouter>
     )
 
-    const homeLink = screen.getByRole('link', { name: /home/i })
     const searchLink = screen.getByRole('link', { name: /search/i })
     const bookmarkLink = screen.getByRole('link', { name: /bookmark/i })
 
-    expect(homeLink).toBeInTheDocument()
     expect(searchLink).toBeInTheDocument()
     expect(bookmarkLink).toBeInTheDocument()
   })

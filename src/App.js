@@ -1,12 +1,17 @@
 import Navigation from './components/Navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
+import DetailsPage from './pages/DetailsPage'
 
 function App() {
   const [data, setData] = useState([])
-  console.log(data)
+  const [card, setCard] = useState({})
+  console.log(card)
+
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   async function getCard(name) {
     const response = await fetch(
@@ -15,6 +20,12 @@ function App() {
     const data = await response.json()
     handleData(data.cards)
   }
+
+  useEffect(() => {
+    if (data.length === 0) {
+      return navigate('/')
+    }
+  }, [])
 
   function handleData(newData) {
     const newCards = newData.map(
@@ -52,13 +63,20 @@ function App() {
     setData(newCards)
   }
 
+  function findCard(id) {
+    setCard(data.find(card => card.id === id))
+  }
+
   return (
-    <Grid>
-      <Title>MTG Archive</Title>
+    <Grid pathname={pathname}>
       <Routes>
         <Route
-          path="/search"
+          path="/"
           element={<SearchPage cards={data} getCard={getCard} />}
+        />
+        <Route
+          path=":id"
+          element={<DetailsPage onFindCard={findCard} card={card} />}
         />
       </Routes>
       <Navigation />
@@ -70,14 +88,9 @@ export default App
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 3rem 7rem 1fr 4rem;
+  ${props =>
+    props.pathname === '/'
+      ? 'grid-template-rows: 3rem 7rem 1fr 4rem;'
+      : 'grid-template-rows: 3rem 1fr 4rem;'}
   height: 100%;
-`
-
-const Title = styled.h1`
-  text-align: center;
-  background-color: rgb(21, 11, 0);
-  color: #fff;
-  position: sticky;
-  top: 0;
 `
