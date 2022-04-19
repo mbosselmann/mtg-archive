@@ -9,7 +9,6 @@ function App() {
   console.log(data)
 
   async function getCard(name) {
-    console.log(name)
     const response = await fetch(
       `https://api.magicthegathering.io/v1/cards?name=${name}`
     )
@@ -18,23 +17,38 @@ function App() {
   }
 
   function handleData(newData) {
-    const newCards = newData.map(card => {
-      const newCard = {
-        id: card.id,
-        name: card.name,
-        text: card.text,
-        image: card.imageUrl,
-        colors: card.colors,
-        originalType: card.originalType,
-        power: card.power,
-        subtypes: card.subtypes,
-        supertypes: card.supertypes,
-        type: card.type,
-        rarity: card.rarity,
-        types: card.types,
+    const newCards = newData.map(
+      ({
+        id,
+        name,
+        text,
+        imageUrl,
+        colors,
+        originalType,
+        power,
+        subtypes,
+        supertypes,
+        type,
+        rarity,
+        types,
+      }) => {
+        const newCard = {
+          id,
+          name,
+          text,
+          image: imageUrl,
+          colors,
+          originalType,
+          power,
+          subtypes,
+          supertypes,
+          type,
+          rarity,
+          types,
+        }
+        return newCard
       }
-      return newCard
-    })
+    )
     setData(newCards)
   }
 
