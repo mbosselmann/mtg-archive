@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Colors from './Colors'
 
-export default function Card({ name, id, image, colors }) {
+export default function Card({ name, id, image, colors, rarity, power }) {
+  const navigate = useNavigate()
   return (
-    <Article color={colors ? colors[0] : ''}>
+    <Article color={colors ? colors[0] : ''} onClick={() => navigate(`/${id}`)}>
       {colors && (
         <ColorsContainer>
           <Colors colors={colors} />
@@ -12,9 +13,14 @@ export default function Card({ name, id, image, colors }) {
       )}
       <h2>{name}</h2>
       <img src={image} alt="card" />
-      <DetailsLink to={`/${id}`} color={colors ? colors[0] : ''}>
-        More »
-      </DetailsLink>
+      <List role="list">
+        <li>
+          <span>Rarity:</span> {rarity}
+        </li>
+        <li>
+          <span>Power:</span> {power}
+        </li>
+      </List>
     </Article>
   )
 }
@@ -47,20 +53,14 @@ const ColorsContainer = styled.div`
   margin-top: -25px;
 `
 
-const DetailsLink = styled(Link)`
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  color: #fff;
-  padding: 8px;
-  text-transform: uppercase;
-  background-color: rgb(21, 11, 0);
-  border-radius: 0 0 5px 5px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'White' && 'color: rgb(21, 11, 0)'};
-  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
-  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
+const List = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+
+  span {
+    font-weight: bold;
+    margin-right: 10px;
+  }
 `

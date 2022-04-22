@@ -19,6 +19,7 @@ const ColorsContainer = styled.div`
 `
 
 const Color = styled.div`
+  position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;

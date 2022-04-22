@@ -9,7 +9,7 @@ export default function SearchPage({ getCard, cards }) {
       <Title>MTG Archive</Title>
       <Search getCard={getCard} />
       <List role="list">
-        {cards.map(({ id, name, image, colors }) => {
+        {cards?.map(({ id, name, image, colors, rarity, power }) => {
           if (image) {
             return (
               <Card
@@ -18,6 +18,8 @@ export default function SearchPage({ getCard, cards }) {
                 name={name}
                 image={image}
                 colors={colors}
+                rarity={rarity}
+                power={power}
               />
             )
           }

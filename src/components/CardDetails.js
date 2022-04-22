@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
 import styled from 'styled-components'
 import Colors from './Colors'
-import { useParams } from 'react-router-dom'
 
-export default function CardDetails({ onFindCard, card }) {
-  const { id } = useParams()
+export default function CardDetails({ card }) {
   const {
     name,
     originalType,
@@ -18,10 +16,6 @@ export default function CardDetails({ onFindCard, card }) {
     rarity,
     power,
   } = card
-
-  useEffect(() => {
-    onFindCard(id)
-  }, [])
 
   return (
     <Container color={colors ? colors[0] : ''}>

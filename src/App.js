@@ -4,11 +4,13 @@ import styled from 'styled-components'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
+import BookmarksPage from './pages/BookmarksPage'
 
 function App() {
   const [data, setData] = useState([])
-  const [card, setCard] = useState({})
-
+  console.log(data)
+  const [savedCards, setSavedCards] = useState([])
+  console.log('saved Cards', savedCards)
   const { pathname } = useLocation()
   const navigate = useNavigate()
 
@@ -24,7 +26,7 @@ function App() {
     if (data.length === 0) {
       return navigate('/')
     }
-  }, [])
+  }, [data.length, navigate])
 
   function handleData(newData) {
     const newCards = newData.map(
@@ -55,15 +57,49 @@ function App() {
           type,
           rarity,
           types,
+          isBookmarked: false,
         }
+
         return newCard
       }
     )
-    setData(newCards)
+    const checkedNewCards = newCards.map(card => {
+      if (savedCards.find(savedCard => savedCard.id === card.id)) {
+        return { ...card, isBookmarked: true }
+      } else {
+        return card
+      }
+    })
+    setData(checkedNewCards)
   }
 
-  function findCard(id) {
-    setCard(data.find(card => card.id === id))
+  function handleSaveCard(id) {
+    if (savedCards.filter(card => card.id === id).length > 0) {
+      setSavedCards(savedCards.filter(card => card.id !== id))
+      setData(
+        data.map(card => {
+          if (card.id === id) {
+            return { ...card, isBookmarked: false }
+          } else {
+            return card
+          }
+        })
+      )
+
+      navigate('/bookmarks')
+    } else {
+      const newCard = data.find(card => card.id === id)
+      setSavedCards([...savedCards, { ...newCard, isBookmarked: true }])
+      setData(
+        data.map(card => {
+          if (card.id === id) {
+            return { ...card, isBookmarked: true }
+          } else {
+            return card
+          }
+        })
+      )
+    }
   }
 
   return (
@@ -75,7 +111,16 @@ function App() {
         />
         <Route
           path=":id"
-          element={<DetailsPage onFindCard={findCard} card={card} />}
+          element={<DetailsPage data={data} onSaveCard={handleSaveCard} />}
+        />
+        <Route
+          path="bookmarks"
+          element={
+            <BookmarksPage
+              onSaveCard={handleSaveCard}
+              savedCards={savedCards}
+            />
+          }
         />
       </Routes>
       <Navigation />
@@ -89,7 +134,7 @@ const Grid = styled.div`
   display: grid;
   ${props =>
     props.pathname === '/'
-      ? 'grid-template-rows: 3rem 7rem 1fr 4rem;'
-      : 'grid-template-rows: 3rem 3rem 1fr 4rem;'}
+      ? 'grid-template-rows: 3rem 7rem auto 4rem;'
+      : 'grid-template-rows: 3rem 4rem auto 4rem;'}
   height: 100%;
 `
