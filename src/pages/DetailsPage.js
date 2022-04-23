@@ -9,22 +9,22 @@ export default function DetailsPage({ data, onSaveCard }) {
   const [card, setCard] = useState({})
   const [isBookmarked, setIsBookmarked] = useState(false)
 
-  const { id } = useParams()
+  const { _id } = useParams()
 
-  function findCard(id) {
-    setCard(data.find(card => card.id === id))
+  function findCard(_id) {
+    setCard(data.find(card => card._id === _id))
     if (card.isBookmarked) {
       setIsBookmarked(true)
     }
   }
 
-  function handleBookmarkClick(id) {
-    onSaveCard(id)
+  function handleBookmarkClick(_id) {
+    onSaveCard(_id)
     setIsBookmarked(!isBookmarked)
   }
 
   useEffect(() => {
-    findCard(id)
+    findCard(_id)
   }, [card])
 
   return (

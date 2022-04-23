@@ -12,12 +12,12 @@ export default function BookmarksPage({ savedCards }) {
       </ActionContainer>
       {savedCards.length > 0 ? (
         <List role="list">
-          {savedCards.map(({ id, name, image, colors, rarity, power }) => {
+          {savedCards.map(({ _id, name, image, colors, rarity, power }) => {
             if (image) {
               return (
                 <Card
                   key={id}
-                  id={id}
+                  _id={_id}
                   name={name}
                   image={image}
                   colors={colors}

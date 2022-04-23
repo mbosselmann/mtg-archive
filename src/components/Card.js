@@ -2,10 +2,13 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Colors from './Colors'
 
-export default function Card({ name, id, image, colors, rarity, power }) {
+export default function Card({ name, _id, image, colors, rarity, power }) {
   const navigate = useNavigate()
   return (
-    <Article color={colors ? colors[0] : ''} onClick={() => navigate(`/${id}`)}>
+    <Article
+      color={colors ? colors[0] : ''}
+      onClick={() => navigate(`/${_id}`)}
+    >
       {colors && (
         <ColorsContainer>
           <Colors colors={colors} />

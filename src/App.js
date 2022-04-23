@@ -45,7 +45,7 @@ function App() {
         types,
       }) => {
         const newCard = {
-          id,
+          _id: id,
           name,
           text,
           image: imageUrl,
@@ -64,7 +64,7 @@ function App() {
       }
     )
     const checkedNewCards = newCards.map(card => {
-      if (savedCards.find(savedCard => savedCard.id === card.id)) {
+      if (savedCards.find(savedCard => savedCard._id === card._id)) {
         return { ...card, isBookmarked: true }
       } else {
         return card
@@ -74,11 +74,11 @@ function App() {
   }
 
   function handleSaveCard(id) {
-    if (savedCards.filter(card => card.id === id).length > 0) {
-      setSavedCards(savedCards.filter(card => card.id !== id))
+    if (savedCards.filter(card => card._id === id).length > 0) {
+      setSavedCards(savedCards.filter(card => card._id !== id))
       setData(
         data.map(card => {
-          if (card.id === id) {
+          if (card._id === id) {
             return { ...card, isBookmarked: false }
           } else {
             return card
@@ -88,11 +88,11 @@ function App() {
 
       navigate('/bookmarks')
     } else {
-      const newCard = data.find(card => card.id === id)
+      const newCard = data.find(card => card._id === id)
       setSavedCards([...savedCards, { ...newCard, isBookmarked: true }])
       setData(
         data.map(card => {
-          if (card.id === id) {
+          if (card._id === id) {
             return { ...card, isBookmarked: true }
           } else {
             return card
@@ -110,7 +110,7 @@ function App() {
           element={<SearchPage cards={data} getCard={getCard} />}
         />
         <Route
-          path=":id"
+          path=":_id"
           element={<DetailsPage data={data} onSaveCard={handleSaveCard} />}
         />
         <Route
