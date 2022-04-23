@@ -8,7 +8,7 @@ import BookmarksPage from './pages/BookmarksPage'
 
 function App() {
   const [data, setData] = useState([])
-  console.log(data)
+  console.log('data', data)
   const [savedCards, setSavedCards] = useState([])
   console.log('saved Cards', savedCards)
   const { pathname } = useLocation()
@@ -110,7 +110,7 @@ function App() {
           element={<SearchPage cards={data} getCard={getCard} />}
         />
         <Route
-          path=":_id"
+          path="/:_id"
           element={<DetailsPage data={data} onSaveCard={handleSaveCard} />}
         />
         <Route

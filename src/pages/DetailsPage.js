@@ -10,6 +10,7 @@ export default function DetailsPage({ data, onSaveCard }) {
   const [isBookmarked, setIsBookmarked] = useState(false)
 
   const { _id } = useParams()
+  console.log(_id)
 
   function findCard(_id) {
     setCard(data.find(card => card._id === _id))
@@ -29,12 +30,12 @@ export default function DetailsPage({ data, onSaveCard }) {
 
   return (
     <>
-      {card.id && (
+      {card._id && (
         <>
           <Title color={card.colors ? card.colors[0] : ''}>Card Details</Title>
           <ActionContainer>
             <Link to="/">Back to Search Results</Link>
-            <button onClick={() => handleBookmarkClick(id)}>
+            <button onClick={() => handleBookmarkClick(_id)}>
               {isBookmarked ? 'Bookmarked' : 'Bookmark'}
             </button>
           </ActionContainer>

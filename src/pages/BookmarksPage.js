@@ -16,7 +16,7 @@ export default function BookmarksPage({ savedCards }) {
             if (image) {
               return (
                 <Card
-                  key={id}
+                  key={_id}
                   _id={_id}
                   name={name}
                   image={image}
