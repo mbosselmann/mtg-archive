@@ -99,8 +99,9 @@ const Wrapper = styled.div`
 const Img = styled.img`
   display: block;
   padding: 30px 60px;
-  width: 100%;
+  max-width: 400px;
   height: auto;
+  margin: 0 auto;
 `
 
 const Title = styled.h2`
