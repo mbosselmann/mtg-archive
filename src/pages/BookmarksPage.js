@@ -2,17 +2,29 @@ import Card from '../components/Card'
 import styled from 'styled-components'
 import ActionContainer from '../components/ActionContainer'
 import { Link } from 'react-router-dom'
+import Filter from '../components/Filter.js'
+import { useState } from 'react'
 
 export default function BookmarksPage({ savedCards }) {
+  const [filteredCards, setFilteredCards] = useState(savedCards)
+
+  function filterCards(color) {
+    if (color === 'all') {
+      return setFilteredCards(savedCards)
+    }
+    const filter = savedCards.filter(card => card.colors.includes(color))
+    setFilteredCards(filter.length > 0 ? filter : savedCards)
+  }
   return (
     <>
       <Title>Bookmarked Cards</Title>
       <ActionContainer>
         <Link to="/">Back to Search Results</Link>
       </ActionContainer>
-      {savedCards.length > 0 ? (
+      <Filter filterCards={filterCards} />
+      {filteredCards.length > 0 ? (
         <List role="list">
-          {savedCards.map(({ _id, name, image, colors, rarity, power }) => {
+          {filteredCards.map(({ _id, name, image, colors, rarity, power }) => {
             if (image) {
               return (
                 <Card
