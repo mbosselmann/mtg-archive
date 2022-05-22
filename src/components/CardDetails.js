@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import styled from 'styled-components'
 import Colors from './Colors'
 
@@ -100,6 +99,8 @@ const Wrapper = styled.div`
 const Img = styled.img`
   display: block;
   padding: 30px 60px;
+  width: 100%;
+  height: auto;
 `
 
 const Title = styled.h2`
