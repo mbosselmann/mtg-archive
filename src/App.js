@@ -1,5 +1,5 @@
 import Navigation from './components/Navigation'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
@@ -21,12 +21,6 @@ function App() {
     const data = await response.json()
     handleData(data.cards)
   }
-
-  useEffect(() => {
-    if (data.length === 0) {
-      return navigate('/')
-    }
-  }, [data.length, navigate])
 
   function handleData(newData) {
     const newCards = newData.map(
@@ -114,7 +108,7 @@ function App() {
           element={<DetailsPage data={data} onSaveCard={handleSaveCard} />}
         />
         <Route
-          path="bookmarks"
+          path="/bookmarks"
           element={
             <BookmarksPage
               onSaveCard={handleSaveCard}
