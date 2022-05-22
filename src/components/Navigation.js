@@ -13,7 +13,6 @@ export default function Navigation() {
 
 const Nav = styled.nav`
   display: flex;
-  width: 100%;
   background-color: #e2dcd5;
   height: 4rem;
 `
