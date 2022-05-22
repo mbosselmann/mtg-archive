@@ -46,7 +46,8 @@ const Input = styled.input`
   padding: 8px;
   border-radius: 8px 0 0 8px;
   border: none;
-  flex-grow: 2;
+  width: 0;
+  flex-grow: 3;
 
   &:focus {
     outline: medium solid rgb(21, 11, 0);
