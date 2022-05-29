@@ -2,6 +2,7 @@ import Card from '../components/Card'
 import styled from 'styled-components'
 import ActionContainer from '../components/ActionContainer'
 import Filter from '../components/Filter.js'
+import { Text } from '../components/Text.js'
 import { useState } from 'react'
 
 export default function BookmarksPage({ savedCards }) {
@@ -54,8 +55,4 @@ const Title = styled.h1`
 const List = styled.ul`
   padding-left: 0;
   overflow-y: scroll;
-`
-const Text = styled.p`
-  margin-top: 2rem;
-  padding: 20px;
 `

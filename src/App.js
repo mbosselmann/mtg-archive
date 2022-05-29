@@ -8,16 +8,25 @@ import BookmarksPage from './pages/BookmarksPage'
 
 function App() {
   const [data, setData] = useState([])
+  const [message, setMessage] = useState('')
   const [savedCards, setSavedCards] = useState([])
   const { pathname } = useLocation()
   const navigate = useNavigate()
 
   async function getCard(name) {
-    const response = await fetch(
-      `https://api.magicthegathering.io/v1/cards?name=${name}`
-    )
-    const data = await response.json()
-    handleData(data.cards)
+    try {
+      const response = await fetch(
+        `https://api.magicthegathering.io/v1/cards?name=${name}`
+      )
+      const data = await response.json()
+      handleData(data.cards)
+      console.log(data)
+      if (data.cards.length === 0) {
+        setMessage('Nothing found! Please try another possible name.')
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   function handleData(newData) {
@@ -99,7 +108,9 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<SearchPage cards={data} getCard={getCard} />}
+          element={
+            <SearchPage cards={data} getCard={getCard} message={message} />
+          }
         />
         <Route
           path="/:_id"

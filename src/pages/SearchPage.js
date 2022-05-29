@@ -1,30 +1,35 @@
 import Card from '../components/Card'
 import Search from '../components/Search'
+import { Text } from '../components/Text.js'
 
 import styled from 'styled-components'
 
-export default function SearchPage({ getCard, cards }) {
+export default function SearchPage({ getCard, cards, message }) {
   return (
     <>
       <Title>MTG Archive</Title>
       <Search getCard={getCard} />
-      <List role="list">
-        {cards?.map(({ _id, name, image, colors, rarity, power }) => {
-          if (image) {
-            return (
-              <Card
-                key={_id}
-                _id={_id}
-                name={name}
-                image={image}
-                colors={colors}
-                rarity={rarity}
-                power={power}
-              />
-            )
-          }
-        })}
-      </List>
+      {cards.length > 0 ? (
+        <List role="list">
+          {cards?.map(({ _id, name, image, colors, rarity, power }) => {
+            if (image) {
+              return (
+                <Card
+                  key={_id}
+                  _id={_id}
+                  name={name}
+                  image={image}
+                  colors={colors}
+                  rarity={rarity}
+                  power={power}
+                />
+              )
+            }
+          })}
+        </List>
+      ) : (
+        <Text>{message}</Text>
+      )}
     </>
   )
 }
