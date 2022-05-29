@@ -50,7 +50,7 @@ const Article = styled.li`
   }
 `
 const ColorsContainer = styled.div`
-  margin-top: -25px;
+  margin-top: -35px;
 `
 
 const List = styled.ul`
