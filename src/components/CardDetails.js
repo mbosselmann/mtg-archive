@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Colors from './Colors'
+import { Img } from './Image.js'
 
 export default function CardDetails({ card }) {
   const {
@@ -94,14 +95,6 @@ const Wrapper = styled.div`
   p {
     padding: 8px 20px 20px;
   }
-`
-
-const Img = styled.img`
-  display: block;
-  padding: 30px 60px;
-  max-width: 400px;
-  height: auto;
-  margin: 0 auto;
 `
 
 const Title = styled.h2`

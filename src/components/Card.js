@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Colors from './Colors'
+import { Img } from './Image.js'
 
 export default function Card({ name, _id, image, colors, rarity, power }) {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ export default function Card({ name, _id, image, colors, rarity, power }) {
         </ColorsContainer>
       )}
       <h2>{name}</h2>
-      <img src={image} alt="card" />
+      <Img src={image} alt="card" />
       <List role="list">
         <li>
           <span>Rarity:</span> {rarity}
@@ -46,10 +47,6 @@ const Article = styled.li`
   dl,
   p {
     padding: 25px 20px 0 20px;
-  }
-
-  img {
-    padding: 20px 50px;
   }
 `
 const ColorsContainer = styled.div`
