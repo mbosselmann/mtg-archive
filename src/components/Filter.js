@@ -15,6 +15,7 @@ export default function Filter({ filterCards }) {
 
 const Container = styled.div`
   background-color: #b1aba5;
+  width: 100%;
   display: grid;
   place-items: center;
 `

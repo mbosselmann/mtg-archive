@@ -29,7 +29,12 @@ export default function Colors({ colors, component, filterCards }) {
 const ColorsContainer = styled.div`
   display: flex;
   gap: 10px;
-  padding: 0 20px;
+  padding: 10px 20px;
+
+  @media (max-width: 390px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `
 
 const colorMix = keyframes`
@@ -47,6 +52,7 @@ const colorMixAnimation = css`
 `
 
 const Color = styled.div`
+  flex: 0 1 50px;
   position: relative;
   width: 50px;
   height: 50px;
