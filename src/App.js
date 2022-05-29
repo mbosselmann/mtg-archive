@@ -129,8 +129,7 @@ const Grid = styled.div`
   ${props =>
     props.pathname === '/:id' && 'grid-template-rows: 3rem 4rem auto 4rem;'}
   ${props =>
-    props.pathname === '/bookmarks' &&
-    'grid-template-rows: 3rem 1fr auto 4rem;'}
+    props.pathname === '/bookmarks' && 'grid-template-rows: 3rem 1fr 6fr 4rem;'}
 
   height: 100%;
 `

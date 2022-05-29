@@ -4,7 +4,7 @@ import { keyframes } from 'styled-components'
 
 export default function Colors({ colors, component, filterCards }) {
   return (
-    <ColorsContainer>
+    <ColorsContainer colors={colors}>
       {component === 'button' && (
         <Color
           color={'Mixed'}
@@ -33,7 +33,8 @@ const ColorsContainer = styled.div`
 
   @media (max-width: 390px) {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 50px 50px 50px;
+    gap: 10px;
   }
 `
 
