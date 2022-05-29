@@ -18,13 +18,4 @@ const Wrapper = styled.div`
     text-decoration: none;
     color: #000;
   }
-
-  button {
-    flex: 1;
-    border: none;
-    padding: 8px;
-    background-color: #d1bea7;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
 `

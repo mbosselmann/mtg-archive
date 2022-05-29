@@ -10,7 +10,6 @@ export default function DetailsPage({ data, onSaveCard }) {
   const [isBookmarked, setIsBookmarked] = useState(false)
 
   const { _id } = useParams()
-  console.log(_id)
 
   function findCard(_id) {
     setCard(data.find(card => card._id === _id))
@@ -35,9 +34,9 @@ export default function DetailsPage({ data, onSaveCard }) {
           <Title color={card.colors ? card.colors[0] : ''}>Card Details</Title>
           <ActionContainer>
             <Link to="/">Back to Search Results</Link>
-            <button onClick={() => handleBookmarkClick(_id)}>
+            <Button onClick={() => handleBookmarkClick(_id)}>
               {isBookmarked ? 'Bookmarked' : 'Bookmark'}
-            </button>
+            </Button>
           </ActionContainer>
           <CardDetails card={card} />
         </>
@@ -57,4 +56,12 @@ const Title = styled.h1`
   ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
   position: sticky;
   top: 0;
+`
+const Button = styled.button`
+  background-color: #d1bea7;
+  flex: 1;
+  border: none;
+  padding: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
 `
