@@ -11,7 +11,6 @@ function App() {
   const [message, setMessage] = useState('')
   const [savedCards, setSavedCards] = useState([])
   const { pathname } = useLocation()
-  const navigate = useNavigate()
 
   async function getCard(name) {
     try {
@@ -86,8 +85,6 @@ function App() {
           }
         })
       )
-
-      navigate('/bookmarks')
     } else {
       const newCard = data.find(card => card._id === id)
       setSavedCards([...savedCards, { ...newCard, isBookmarked: true }])

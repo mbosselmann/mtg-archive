@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom'
-
+import { StyledHeart } from './Heart.js'
 import styled from 'styled-components'
 
 export default function Navigation() {
   return (
     <Nav>
       <StyledLink to="/">Search</StyledLink>
-      <StyledLink to="/bookmarks">Bookmarks</StyledLink>
+      <StyledLink to="/bookmarks">
+        <StyledHeart />
+      </StyledLink>
     </Nav>
   )
 }

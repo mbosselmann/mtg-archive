@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ActionContainer from '../components/ActionContainer'
 import { Link } from 'react-router-dom'
+import { StyledHeart } from '../components/Heart.js'
 import styled from 'styled-components'
 
 export default function DetailsPage({ data, onSaveCard }) {
@@ -34,8 +35,11 @@ export default function DetailsPage({ data, onSaveCard }) {
           <Title color={card.colors ? card.colors[0] : ''}>Card Details</Title>
           <ActionContainer>
             <Link to="/">Back to Search Results</Link>
-            <Button onClick={() => handleBookmarkClick(_id)}>
-              {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+            <Button
+              onClick={() => handleBookmarkClick(_id)}
+              isBookmarked={isBookmarked}
+            >
+              <StyledHeart />
             </Button>
           </ActionContainer>
           <CardDetails card={card} />
@@ -58,10 +62,14 @@ const Title = styled.h1`
   top: 0;
 `
 const Button = styled.button`
-  background-color: #d1bea7;
   flex: 1;
+  display: grid;
+  place-items: center;
   border: none;
   padding: 8px;
   text-transform: uppercase;
   font-weight: bold;
+  ${props => props.isBookmarked && 'color: #fff'};
+  ${props =>
+    props.isBookmarked ? 'background-color: #000' : 'background-color: #d1bea7'}
 `
