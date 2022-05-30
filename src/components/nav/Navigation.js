@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import { StyledHeart } from './Heart.js'
-import { SearchIcon } from './SearchIcon.js'
-import SrOnly from './SrOnly.js'
+import { StyledHeart } from '../icons/Heart.js'
+import { SearchIcon } from '../icons/SearchIcon.js'
+import SrOnly from '../styles/SrOnly.js'
 import styled from 'styled-components'
 
 export default function Navigation() {

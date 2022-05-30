@@ -1,10 +1,10 @@
-import CardDetails from '../components/CardDetails'
+import CardDetails from '../components/card/CardDetails'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ActionContainer from '../components/ActionContainer'
+import ActionContainer from '../components/action/ActionContainer'
 import { Link } from 'react-router-dom'
-import { StyledHeart } from '../components/Heart.js'
-import { ArrowIcon } from '../components/ArrowIcon.js'
+import { StyledHeart } from '../components/icons/Heart.js'
+import { ArrowIcon } from '../components/icons/ArrowIcon.js'
 import styled from 'styled-components'
 
 export default function DetailsPage({ data, onSaveCard }) {

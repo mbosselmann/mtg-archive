@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Colors from './Colors'
-import { Img } from './Image.js'
+import Colors from '../circles/Colors'
+import { Img } from '../styles/Image.js'
 
 export default function CardDetails({ card }) {
   const {

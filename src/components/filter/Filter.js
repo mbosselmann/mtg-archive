@@ -1,4 +1,4 @@
-import Colors from './Colors.js'
+import Colors from '../circles/Colors.js'
 import styled from 'styled-components'
 
 export default function Filter({ filterCards }) {

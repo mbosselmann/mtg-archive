@@ -1,9 +1,9 @@
-import Card from '../components/Card'
+import Card from '../components/card/Card'
 import styled from 'styled-components'
-import ActionContainer from '../components/ActionContainer'
-import Filter from '../components/Filter.js'
-import Button from '../components/Button.js'
-import { Text } from '../components/Text.js'
+import ActionContainer from '../components/action/ActionContainer'
+import Filter from '../components/filter/Filter.js'
+import Button from '../components/styles/Button.js'
+import { Text } from '../components/styles/Text.js'
 import { useState } from 'react'
 
 export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {

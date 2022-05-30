@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from '../styles/Button'
 import styled from 'styled-components'
 
 export default function Search({ getCard }) {

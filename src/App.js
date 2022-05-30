@@ -1,4 +1,4 @@
-import Navigation from './components/Navigation'
+import Navigation from './components/nav/Navigation'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { Routes, Route, useLocation } from 'react-router-dom'

@@ -1,6 +1,6 @@
-import Card from '../components/Card'
-import Search from '../components/Search'
-import { Text } from '../components/Text.js'
+import Card from '../components/card/Card'
+import Search from '../components/search/Search'
+import { Text } from '../components/styles/Text.js'
 
 import styled from 'styled-components'
 
