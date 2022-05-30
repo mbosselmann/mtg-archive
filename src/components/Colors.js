@@ -31,9 +31,10 @@ const ColorsContainer = styled.div`
   gap: 10px;
   padding: 10px 20px;
 
-  @media (max-width: 390px) {
+  @media (max-width: 504px) {
     display: grid;
     grid-template-columns: 50px 50px 50px;
+    place-items: center;
     gap: 10px;
   }
 `
