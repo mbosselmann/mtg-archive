@@ -99,6 +99,15 @@ function App() {
     }
   }
 
+  function removeAllBookmarks() {
+    setSavedCards(
+      savedCards.map(card => {
+        const newCard = { ...card, isBookmarked: false }
+        return newCard
+      })
+    )
+  }
+
   return (
     <Grid pathname={pathname}>
       <Routes>
@@ -116,8 +125,8 @@ function App() {
           path="/bookmarks"
           element={
             <BookmarksPage
-              onSaveCard={handleSaveCard}
               savedCards={savedCards}
+              onRemoveAllBookmarks={removeAllBookmarks}
             />
           }
         />
