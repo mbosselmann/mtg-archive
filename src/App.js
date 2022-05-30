@@ -19,7 +19,6 @@ function App() {
       )
       const data = await response.json()
       handleData(data.cards)
-      console.log(data)
       if (data.cards.length === 0) {
         setMessage('Nothing found! Please try another possible name.')
       }
