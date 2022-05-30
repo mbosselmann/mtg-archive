@@ -1,7 +1,7 @@
 import Navigation from './components/Navigation'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
 import BookmarksPage from './pages/BookmarksPage'

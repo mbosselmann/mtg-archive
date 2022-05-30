@@ -1,13 +1,18 @@
 import { NavLink } from 'react-router-dom'
 import { StyledHeart } from './Heart.js'
+import { SearchIcon } from './SearchIcon.js'
+import SrOnly from './SrOnly.js'
 import styled from 'styled-components'
 
 export default function Navigation() {
   return (
     <Nav>
-      <StyledLink to="/">Search</StyledLink>
+      <StyledLink to="/">
+        <SearchIcon />
+        <SrOnly>Search</SrOnly>
+      </StyledLink>
       <StyledLink to="/bookmarks">
-        <StyledHeart />
+        <StyledHeart /> <SrOnly>Bookmarks</SrOnly>
       </StyledLink>
     </Nav>
   )
@@ -20,7 +25,12 @@ const Nav = styled.nav`
 `
 
 const StyledLink = styled(NavLink)`
-  display: grid;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 20px;
   place-items: center;
   flex: 1;
   text-decoration: none;
