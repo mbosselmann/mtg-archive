@@ -5,11 +5,12 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
 import BookmarksPage from './pages/BookmarksPage'
+import useLocalStorage from './hooks/useLocalStorage.js'
 
 function App() {
   const [data, setData] = useState([])
   const [message, setMessage] = useState('')
-  const [savedCards, setSavedCards] = useState([])
+  const [savedCards, setSavedCards] = useLocalStorage('cards', [])
   const { pathname } = useLocation()
 
   async function getCard(name) {
