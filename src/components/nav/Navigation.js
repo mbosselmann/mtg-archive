@@ -20,7 +20,7 @@ export default function Navigation() {
 
 const Nav = styled.nav`
   display: flex;
-  background-color: #e2dcd5;
+  background-color: var(--secondary-color);
   height: 4rem;
 `
 
@@ -34,12 +34,12 @@ const StyledLink = styled(NavLink)`
   place-items: center;
   flex: 1;
   text-decoration: none;
-  color: #000;
+  color: var(--text-color);
   text-transform: uppercase;
   font-weight: bold;
 
   &.active {
-    background-color: rgb(21, 11, 0);
+    background-color: var(--black);
     color: #fff;
   }
 `

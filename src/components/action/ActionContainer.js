@@ -6,7 +6,7 @@ export default function ActionContainer({ children }) {
 
 const Wrapper = styled.div`
   display: flex;
-  background-color: #e2dcd5;
+  background-color: var(--secondary-color);
   text-transform: uppercase;
   font-weight: bold;
 `

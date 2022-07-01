@@ -5,6 +5,19 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
 }
+
+:root {
+  --main-color: #fff;
+  --secondary-color: #e2dcd5;
+  --text-color: #000;
+  --black: rgb(21, 11, 0);
+  --red: rgb(211, 32, 42);
+  --blue: rgb(14, 104, 171);
+  --green: rgb(0, 115, 62);
+  --white: rgb(166, 159, 157);
+
+}
+
 html, body, #root {
     height: 100%;
 }

@@ -83,7 +83,7 @@ const Container = styled.div`
   ${props => props.color === 'Red' && 'background-color: rgb(235, 159, 130)'};
   ${props => props.color === 'Blue' && 'background-color: rgb(179, 206, 234)'};
   ${props => props.color === 'Green' && 'background-color: rgb(196, 211, 202)'};
-  ${props => props.color === 'Black' && 'background-color: rgb(166, 159, 157)'};
+  ${props => props.color === 'Black' && 'background-color: var(--white)'};
 `
 
 const Wrapper = styled.div`
@@ -116,12 +116,12 @@ const List = styled.ul`
 const SubTitle = styled.h3`
   padding: 8px 20px;
   color: #fff;
-  background-color: rgb(21, 11, 0);
+  background-color: var(--black);
   ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'White' && 'color: rgb(21, 11, 0)'};
-  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
-  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
+  ${props => props.color === 'White' && 'color: var(--black)'};
+  ${props => props.color === 'Red' && 'background-color: var(--red)'};
+  ${props => props.color === 'Blue' && 'background-color: var(--blue)'};
+  ${props => props.color === 'Green' && 'background-color: var(--green)'};
 `
 
 const DescriptionList = styled.dl`

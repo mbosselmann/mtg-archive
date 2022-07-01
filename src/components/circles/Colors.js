@@ -41,10 +41,10 @@ const ColorsContainer = styled.div`
 
 const colorMix = keyframes`
   0% {color: rgb(248, 231, 185)}
-  20% { color: rgb(211, 32, 42)}
-  40% {color: rgb(14, 104, 171)}
-  60% { color: rgb(21, 11, 0) }
-  80% {color: rgb(0, 115, 62)}
+  20% { color: var(--red)}
+  40% {color: var(--blue)}
+  60% { color: var(--black) }
+  80% {color: var(--green)}
   100% {color: rgb(248, 231, 185)}
 
 `
@@ -61,10 +61,10 @@ const Color = styled.div`
   border-radius: 50%;
   border: none;
   ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
-  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
-  ${props => props.color === 'Black' && 'background-color: rgb(21, 11, 0)'};
+  ${props => props.color === 'Red' && 'background-color: var(--red)'};
+  ${props => props.color === 'Blue' && 'background-color: var(--blue)'};
+  ${props => props.color === 'Green' && 'background-color: var(--green)'};
+  ${props => props.color === 'Black' && 'background-color: var(--black)'};
   ${props => props.color === 'Mixed' && colorMixAnimation};
   ${props => props.color === 'Mixed' && 'background-color: currentColor'};
 `

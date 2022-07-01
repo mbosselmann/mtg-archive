@@ -22,7 +22,7 @@ export default function Search({ getCard }) {
 }
 
 const Form = styled.form`
-  background-color: #e2dcd5;
+  background-color: var(--secondary-color);
   padding: 20px;
   margin-bottom: 10px;
   position: sticky;
@@ -50,7 +50,7 @@ const Input = styled.input`
   flex-grow: 3;
 
   &:focus {
-    outline: medium solid rgb(21, 11, 0);
+    outline: medium solid var(--black);
     outline-offset: -3px;
   }
 `

@@ -1,45 +1,45 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Colors from '../circles/Colors'
 import { Img } from '../styles/Image.js'
 
 export default function Card({ name, _id, image, colors, rarity, power }) {
+  const navigate = useNavigate()
   return (
-    <Link to={`/${_id}`}>
-      <Article color={colors ? colors[0] : ''}>
-        {colors && (
-          <ColorsContainer>
-            <Colors colors={colors} />
-          </ColorsContainer>
-        )}
-        <h2>{name}</h2>
-        <Img src={image} alt="card" />
-        <List role="list">
-          <li>
-            <span>Rarity:</span> {rarity}
-          </li>
-          <li>
-            <span>Power:</span> {power}
-          </li>
-        </List>
-      </Article>
-    </Link>
+    <Article
+      color={colors ? colors[0] : ''}
+      onClick={() => navigate(`/${_id}`)}
+    >
+      {colors && (
+        <ColorsContainer>
+          <Colors colors={colors} />
+        </ColorsContainer>
+      )}
+      <h2>{name}</h2>
+      <Img src={image} alt="card" />
+      <List role="list">
+        <li>
+          <span>Rarity:</span> {rarity}
+        </li>
+        <li>
+          <span>Power:</span> {power}
+        </li>
+      </List>
+    </Article>
   )
 }
 
 const Article = styled.li`
   list-style: none;
-  box-shadow: 0 0 10px rgb(21, 11, 0);
+  box-shadow: 0 0 10px var(--black);
   border-radius: 5px;
   margin: 40px 20px;
   display: flex;
   flex-direction: column;
-  ${props =>
-    props.color === 'White' && 'box-shadow: 0 0 10px rgb(166, 159, 157)'};
-  ${props => props.color === 'Red' && 'box-shadow: 0 0 10px rgb(211, 32, 42)'};
-  ${props =>
-    props.color === 'Blue' && 'box-shadow: 0 0 10px rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'box-shadow: 0 0 10px rgb(0, 115, 62)'};
+  ${props => props.color === 'White' && 'box-shadow: 0 0 10px var(--white)'};
+  ${props => props.color === 'Red' && 'box-shadow: 0 0 10px var(--red)'};
+  ${props => props.color === 'Blue' && 'box-shadow: 0 0 10px var(--blue)'};
+  ${props => props.color === 'Green' && 'box-shadow: 0 0 10px var(--green)'};
 
   h2,
   dl,

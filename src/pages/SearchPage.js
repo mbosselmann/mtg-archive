@@ -36,7 +36,7 @@ export default function SearchPage({ getCard, cards, message }) {
 
 const Title = styled.h1`
   text-align: center;
-  background-color: rgb(21, 11, 0);
+  background-color: var(--black);
   color: #fff;
 `
 

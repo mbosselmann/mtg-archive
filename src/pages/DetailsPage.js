@@ -55,13 +55,13 @@ export default function DetailsPage({ data, onSaveCard }) {
 
 const Title = styled.h1`
   text-align: center;
-  background-color: rgb(21, 11, 0);
+  background-color: var(--black);
   color: #fff;
   ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'White' && 'color: rgb(21, 11, 0)'};
-  ${props => props.color === 'Red' && 'background-color: rgb(211, 32, 42)'};
-  ${props => props.color === 'Blue' && 'background-color: rgb(14, 104, 171)'};
-  ${props => props.color === 'Green' && 'background-color: rgb(0, 115, 62)'};
+  ${props => props.color === 'White' && 'color: var(--black)'};
+  ${props => props.color === 'Red' && 'background-color: var(--red)'};
+  ${props => props.color === 'Blue' && 'background-color: var(--blue)'};
+  ${props => props.color === 'Green' && 'background-color: var(--green)'};
   position: sticky;
   top: 0;
 `
@@ -84,5 +84,5 @@ const BackLink = styled(Link)`
   gap: 10px;
   padding: 8px;
   text-decoration: none;
-  color: #000;
+  color: var(--text-color);
 `
