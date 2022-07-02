@@ -7,16 +7,25 @@ import { StyledHeart } from '../components/icons/Heart.js'
 import { ArrowIcon } from '../components/icons/ArrowIcon.js'
 import styled from 'styled-components'
 
-export default function DetailsPage({ data, onSaveCard }) {
+export default function DetailsPage({ data, savedCards, onSaveCard }) {
   const [card, setCard] = useState({})
   const [isBookmarked, setIsBookmarked] = useState(false)
-
+  console.log('data', data)
+  console.log('card', card)
   const { _id } = useParams()
+  console.log(_id)
 
   function findCard(_id) {
-    setCard(data.find(card => card._id === _id))
-    if (card.isBookmarked) {
-      setIsBookmarked(true)
+    if (data.length > 0) {
+      setCard(data.find(card => card._id === _id))
+      if (card.isBookmarked) {
+        setIsBookmarked(true)
+      }
+    } else {
+      setCard(savedCards.find(card => card._id === _id))
+      if (card.isBookmarked) {
+        setIsBookmarked(true)
+      }
     }
   }
 
@@ -27,7 +36,7 @@ export default function DetailsPage({ data, onSaveCard }) {
 
   useEffect(() => {
     findCard(_id)
-  }, [card])
+  }, [card, _id]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

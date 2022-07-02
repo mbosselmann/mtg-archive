@@ -9,6 +9,7 @@ import useLocalStorage from './hooks/useLocalStorage.js'
 
 function App() {
   const [data, setData] = useState([])
+  console.log(data)
   const [message, setMessage] = useState('')
   const [savedCards, setSavedCards] = useLocalStorage('cards', [])
   const { pathname } = useLocation()
@@ -120,7 +121,13 @@ function App() {
         />
         <Route
           path="/:_id"
-          element={<DetailsPage data={data} onSaveCard={handleSaveCard} />}
+          element={
+            <DetailsPage
+              data={data}
+              savedCards={savedCards}
+              onSaveCard={handleSaveCard}
+            />
+          }
         />
         <Route
           path="/bookmarks"

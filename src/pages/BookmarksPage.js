@@ -38,19 +38,17 @@ export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {
       {filteredCards.length > 0 ? (
         <List role="list">
           {filteredCards.map(({ _id, name, image, colors, rarity, power }) => {
-            if (image) {
-              return (
-                <Card
-                  key={_id}
-                  _id={_id}
-                  name={name}
-                  image={image}
-                  colors={colors}
-                  rarity={rarity}
-                  power={power}
-                />
-              )
-            }
+            return (
+              <Card
+                key={_id}
+                _id={_id}
+                name={name}
+                image={image}
+                colors={colors}
+                rarity={rarity}
+                power={power}
+              />
+            )
           })}
         </List>
       ) : (
