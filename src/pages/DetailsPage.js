@@ -16,16 +16,10 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
   console.log(_id)
 
   function findCard(_id) {
-    if (data.length > 0) {
-      setCard(data.find(card => card._id === _id))
-      if (card.isBookmarked) {
-        setIsBookmarked(true)
-      }
-    } else {
-      setCard(savedCards.find(card => card._id === _id))
-      if (card.isBookmarked) {
-        setIsBookmarked(true)
-      }
+    const searchedCard = data.find(card => card._id === _id)
+    setCard(searchedCard)
+    if (searchedCard.isBookmarked) {
+      setIsBookmarked(true)
     }
   }
 
@@ -46,7 +40,6 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
           <ActionContainer>
             <BackLink to="/">
               <ArrowIcon />
-              <p>Back to Search Results</p>
             </BackLink>
             <Button
               onClick={() => handleBookmarkClick(_id)}
@@ -64,15 +57,21 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
 
 const Title = styled.h1`
   text-align: center;
-  background-color: var(--black);
-  color: #fff;
+  background-color: var(--tertiary-color);
+  color: var(--text-color);
   ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'White' && 'color: var(--black)'};
+  ${props => props.color === 'White' && 'color: var(--tertiary-color)'};
   ${props => props.color === 'Red' && 'background-color: var(--red)'};
   ${props => props.color === 'Blue' && 'background-color: var(--blue)'};
   ${props => props.color === 'Green' && 'background-color: var(--green)'};
   position: sticky;
   top: 0;
+
+  @media (prefers-color-scheme: light) {
+    background-color: var(--black);
+    color: var(--light-text-color);
+    ${props => props.color === 'White' && 'color: var(--black)'};
+  }
 `
 const Button = styled.button`
   flex: 1;
@@ -82,16 +81,22 @@ const Button = styled.button`
   padding: 8px;
   text-transform: uppercase;
   font-weight: bold;
-  ${props => props.isBookmarked && 'color: #fff'};
   ${props =>
-    props.isBookmarked ? 'background-color: #000' : 'background-color: #d1bea7'}
+    props.isBookmarked ? 'color: var(--red)' : 'color: var(--secondary-color)'};
+  background-color: var(--main-color);
+
+  @media (prefers-color-scheme: dark) {
+    ${props => (props.isBookmarked ? 'color: var(--red)' : 'color: #fff')};
+    background-color: var(--tertiary-color);
+  }
 `
 
 const BackLink = styled(Link)`
   display: flex;
-  flex: 2;
+  flex: 5;
   gap: 10px;
   padding: 8px;
   text-decoration: none;
   color: var(--text-color);
+  background-color: var(--tertiary-color);
 `

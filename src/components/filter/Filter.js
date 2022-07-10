@@ -18,4 +18,7 @@ const Container = styled.div`
   width: 100%;
   display: grid;
   place-items: center;
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--tertiary-color);
+  }
 `

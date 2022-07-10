@@ -60,8 +60,13 @@ export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {
 
 const Title = styled.h1`
   text-align: center;
-  background-color: var(--black);
-  color: #fff;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+
+  @media (prefers-color-scheme: light) {
+    background-color: var(--black);
+    color: var(--main-color);
+  }
 `
 
 const List = styled.ul`
@@ -71,6 +76,6 @@ const List = styled.ul`
 
 const DeleteButton = styled(Button)`
   border-radius: 0;
-  background-color: #e2dcd5;
+  background-color: var(--secondary-color);
   color: var(--text-color);
 `

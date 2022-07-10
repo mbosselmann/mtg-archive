@@ -87,7 +87,8 @@ const Container = styled.div`
 `
 
 const Wrapper = styled.div`
-  background-color: #fff;
+  background-color: var(--main-color);
+  color: var(--text-color);
   display: flex;
   gap: 20px;
   flex-direction: column;
@@ -115,17 +116,21 @@ const List = styled.ul`
 
 const SubTitle = styled.h3`
   padding: 8px 20px;
-  color: #fff;
+  color: var(--text-color);
   background-color: var(--black);
   ${props => props.color === 'White' && 'background-color: rgb(248, 231, 185)'};
-  ${props => props.color === 'White' && 'color: var(--black)'};
+  ${props => props.color === 'White' && 'color: var(--tertiary-color)'};
   ${props => props.color === 'Red' && 'background-color: var(--red)'};
   ${props => props.color === 'Blue' && 'background-color: var(--blue)'};
   ${props => props.color === 'Green' && 'background-color: var(--green)'};
+
+  @media (prefers-color-scheme: light) {
+    color: var(--light-text-color);
+    ${props => props.color === 'White' && 'color: var(--black)'};
+  }
 `
 
 const DescriptionList = styled.dl`
-  background-color: #fff;
   padding: 8px 20px;
 `
 

@@ -24,6 +24,8 @@ export default function SearchPage({ getCard, cards, message }) {
                   power={power}
                 />
               )
+            } else {
+              return null
             }
           })}
         </List>
@@ -36,8 +38,13 @@ export default function SearchPage({ getCard, cards, message }) {
 
 const Title = styled.h1`
   text-align: center;
-  background-color: var(--black);
-  color: #fff;
+  background-color: var(--tertiary-color);
+  color: var(--text-color);
+
+  @media (prefers-color-scheme: light) {
+    color: var(--light-text-color);
+    background-color: var(--black);
+  }
 `
 
 const List = styled.ul`

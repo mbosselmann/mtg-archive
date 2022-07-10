@@ -39,7 +39,14 @@ const StyledLink = styled(NavLink)`
   font-weight: bold;
 
   &.active {
-    background-color: var(--black);
-    color: #fff;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+  }
+
+  @media (prefers-color-scheme: light) {
+    &.active {
+      background-color: var(--black);
+      color: var(--main-color);
+    }
   }
 `

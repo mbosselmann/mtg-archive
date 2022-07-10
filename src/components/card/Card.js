@@ -30,16 +30,24 @@ export default function Card({ name, _id, image, colors, rarity, power }) {
 }
 
 const Article = styled.li`
+  color: var(--text-color);
   list-style: none;
-  box-shadow: 0 0 10px var(--black);
   border-radius: 5px;
   margin: 40px 20px;
   display: flex;
   flex-direction: column;
-  ${props => props.color === 'White' && 'box-shadow: 0 0 10px var(--white)'};
-  ${props => props.color === 'Red' && 'box-shadow: 0 0 10px var(--red)'};
-  ${props => props.color === 'Blue' && 'box-shadow: 0 0 10px var(--blue)'};
-  ${props => props.color === 'Green' && 'box-shadow: 0 0 10px var(--green)'};
+
+  @media (prefers-color-scheme: light) {
+    box-shadow: 0 0 10px var(--black);
+    ${props => props.color === 'White' && 'box-shadow: 0 0 10px var(--white)'};
+    ${props => props.color === 'Red' && 'box-shadow: 0 0 10px var(--red)'};
+    ${props => props.color === 'Blue' && 'box-shadow: 0 0 10px var(--blue)'};
+    ${props => props.color === 'Green' && 'box-shadow: 0 0 10px var(--green)'};
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--secondary-color);
+  }
 
   h2,
   dl,
