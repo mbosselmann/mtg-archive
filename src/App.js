@@ -13,7 +13,7 @@ function App() {
   const [message, setMessage] = useState('')
   const [savedCards, setSavedCards] = useLocalStorage('cards', [])
   const { pathname } = useLocation()
-
+  console.log('saved', savedCards)
   async function getCard(name) {
     try {
       const response = await fetch(
@@ -30,40 +30,25 @@ function App() {
   }
 
   function handleData(newData) {
-    const newCards = newData.map(
-      ({
-        id,
-        name,
-        text,
-        imageUrl,
-        colors,
-        originalType,
-        power,
-        subtypes,
-        supertypes,
-        type,
-        rarity,
-        types,
-      }) => {
-        const newCard = {
-          _id: id,
-          name,
-          text,
-          image: imageUrl,
-          colors,
-          originalType,
-          power,
-          subtypes,
-          supertypes,
-          type,
-          rarity,
-          types,
-          isBookmarked: false,
-        }
-
-        return newCard
+    const newCards = newData.map(card => {
+      const newCard = {
+        _id: card.id,
+        name: card.name,
+        text: card.text,
+        image: card.imageUrl,
+        colors: card.colors,
+        originalType: card.originalType,
+        power: card.power,
+        subtypes: card.subtypes,
+        supertypes: card.supertypes,
+        type: card.type,
+        rarity: card.rarity,
+        types: card.types,
+        isBookmarked: false,
       }
-    )
+
+      return newCard
+    })
     const checkedNewCards = newCards.map(card => {
       if (savedCards.find(savedCard => savedCard._id === card._id)) {
         return { ...card, isBookmarked: true }

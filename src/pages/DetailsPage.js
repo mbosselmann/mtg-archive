@@ -16,10 +16,18 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
   console.log(_id)
 
   function findCard(_id) {
-    const searchedCard = data.find(card => card._id === _id)
-    setCard(searchedCard)
-    if (searchedCard.isBookmarked) {
-      setIsBookmarked(true)
+    if (data.length > 0) {
+      const searchedCard = data.find(card => card._id === _id)
+      setCard(searchedCard)
+      if (searchedCard.isBookmarked) {
+        setIsBookmarked(true)
+      }
+    } else {
+      const searchedCard = savedCards.find(card => card._id === _id)
+      setCard(searchedCard)
+      if (searchedCard.isBookmarked) {
+        setIsBookmarked(true)
+      }
     }
   }
 
