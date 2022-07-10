@@ -6,14 +6,12 @@ import { Link } from 'react-router-dom'
 import { StyledHeart } from '../components/icons/Heart.js'
 import { ArrowIcon } from '../components/icons/ArrowIcon.js'
 import styled from 'styled-components'
+import { saveBookmarkedCard } from '../services/bookmarks.js'
 
 export default function DetailsPage({ data, savedCards, onSaveCard }) {
   const [card, setCard] = useState({})
   const [isBookmarked, setIsBookmarked] = useState(false)
-  console.log('data', data)
-  console.log('card', card)
   const { _id } = useParams()
-  console.log(_id)
 
   function findCard(_id) {
     if (data.length > 0) {
@@ -25,7 +23,7 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
     } else {
       const searchedCard = savedCards.find(card => card._id === _id)
       setCard(searchedCard)
-      if (searchedCard.isBookmarked) {
+      if (searchedCard?.isBookmarked) {
         setIsBookmarked(true)
       }
     }
@@ -33,6 +31,9 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
 
   function handleBookmarkClick(_id) {
     onSaveCard(_id)
+    if (!isBookmarked) {
+      saveBookmarkedCard(card)
+    }
     setIsBookmarked(!isBookmarked)
   }
 

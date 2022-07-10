@@ -5,6 +5,7 @@ import Filter from '../components/filter/Filter.js'
 import Button from '../components/styles/Button.js'
 import { Text } from '../components/styles/Text.js'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {
   const [filteredCards, setFilteredCards] = useState(savedCards)
@@ -21,6 +22,10 @@ export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {
     }
   }
 
+  useEffect(() => {
+    setFilteredCards(savedCards)
+  }, [savedCards])
+
   return (
     <>
       <Title>Bookmarked Cards</Title>
@@ -35,7 +40,7 @@ export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {
           Remove all Bookmarks
         </DeleteButton>
       </ActionContainer>
-      {filteredCards.length > 0 ? (
+      {filteredCards?.length > 0 ? (
         <List role="list">
           {filteredCards.map(({ _id, name, image, colors, rarity, power }) => {
             return (

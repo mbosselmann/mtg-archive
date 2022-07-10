@@ -5,15 +5,15 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
 import BookmarksPage from './pages/BookmarksPage'
-import useLocalStorage from './hooks/useLocalStorage.js'
+import { useEffect } from 'react'
+import { getBookmarkedCards } from './services/bookmarks.js'
 
 function App() {
   const [data, setData] = useState([])
-  console.log(data)
   const [message, setMessage] = useState('')
-  const [savedCards, setSavedCards] = useLocalStorage('cards', [])
-  const { pathname } = useLocation()
-  console.log('saved', savedCards)
+  const [savedCards, setSavedCards] = useState([])
+  let location = useLocation()
+
   async function getCard(name) {
     try {
       const response = await fetch(
@@ -30,6 +30,7 @@ function App() {
   }
 
   function handleData(newData) {
+    console.log(newData)
     const newCards = newData.map(card => {
       const newCard = {
         _id: card.id,
@@ -50,7 +51,7 @@ function App() {
       return newCard
     })
     const checkedNewCards = newCards.map(card => {
-      if (savedCards.find(savedCard => savedCard._id === card._id)) {
+      if (savedCards?.find(savedCard => savedCard._id === card._id)) {
         return { ...card, isBookmarked: true }
       } else {
         return card
@@ -60,7 +61,7 @@ function App() {
   }
 
   function handleSaveCard(id) {
-    if (savedCards.filter(card => card._id === id).length > 0) {
+    if (savedCards?.filter(card => card._id === id).length > 0) {
       setSavedCards(savedCards.filter(card => card._id !== id))
       setData(
         data.map(card => {
@@ -95,8 +96,16 @@ function App() {
     )
   }
 
+  useEffect(() => {
+    const loadBookmarks = async () => {
+      const bookmarks = await getBookmarkedCards()
+      setSavedCards(bookmarks)
+    }
+    loadBookmarks()
+  }, [])
+
   return (
-    <Grid pathname={pathname}>
+    <Grid pathname={location.pathname}>
       <Routes>
         <Route
           path="/"
