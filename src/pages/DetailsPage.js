@@ -10,36 +10,36 @@ import { saveBookmarkedCard } from '../services/bookmarks.js'
 
 export default function DetailsPage({ data, savedCards, onSaveCard }) {
   const [card, setCard] = useState({})
+  const [cards, setCards] = useState([])
   const [isBookmarked, setIsBookmarked] = useState(false)
   const { _id } = useParams()
 
-  function findCard(_id) {
-    if (data.length > 0) {
-      const searchedCard = data.find(card => card._id === _id)
-      setCard(searchedCard)
-      if (searchedCard.isBookmarked) {
-        setIsBookmarked(true)
-      }
-    } else {
-      const searchedCard = savedCards.find(card => card._id === _id)
-      setCard(searchedCard)
-      if (searchedCard?.isBookmarked) {
-        setIsBookmarked(true)
-      }
-    }
-  }
-
   function handleBookmarkClick(_id) {
     onSaveCard(_id)
-    if (!isBookmarked) {
+    if (isBookmarked) {
       saveBookmarkedCard(card)
     }
     setIsBookmarked(!isBookmarked)
   }
 
   useEffect(() => {
+    setCards(() => {
+      return data.length > 0 ? data : savedCards
+    })
+  }, [data, savedCards])
+
+  useEffect(() => {
+    function findCard(_id) {
+      if (cards.length > 0) {
+        const searchedCard = cards.find(card => card._id === _id)
+        setCard(searchedCard)
+        if (searchedCard?.isBookmarked) {
+          setIsBookmarked(true)
+        }
+      }
+    }
     findCard(_id)
-  }, [card, _id]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [card, _id, cards])
 
   return (
     <>
