@@ -1,18 +1,23 @@
 import Navigation from './components/nav/Navigation'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import SearchPage from './pages/SearchPage'
 import DetailsPage from './pages/DetailsPage'
 import BookmarksPage from './pages/BookmarksPage'
 import { useEffect } from 'react'
-import { getBookmarkedCards } from './services/bookmarks.js'
+import {
+  getBookmarkedCards,
+  saveBookmarkedCard,
+  deleteBookmarkedCard,
+} from './services/bookmarks.js'
 
 function App() {
   const [data, setData] = useState([])
   const [message, setMessage] = useState('')
   const [savedCards, setSavedCards] = useState([])
   let location = useLocation()
+  const navigate = useNavigate()
 
   async function getCard(name) {
     try {
@@ -30,7 +35,6 @@ function App() {
   }
 
   function handleData(newData) {
-    console.log(newData)
     const newCards = newData.map(card => {
       const newCard = {
         _id: card.id,
@@ -63,6 +67,7 @@ function App() {
   function handleSaveCard(id) {
     if (savedCards?.filter(card => card._id === id).length > 0) {
       setSavedCards(savedCards.filter(card => card._id !== id))
+      deleteBookmarkedCard(id)
       setData(
         data.map(card => {
           if (card._id === id) {
@@ -72,9 +77,11 @@ function App() {
           }
         })
       )
+      navigate('/bookmarks')
     } else {
       const newCard = data.find(card => card._id === id)
       setSavedCards([...savedCards, { ...newCard, isBookmarked: true }])
+      saveBookmarkedCard({ ...newCard, isBookmarked: true })
       setData(
         data.map(card => {
           if (card._id === id) {

@@ -34,3 +34,22 @@ export const getBookmarkedCards = async () => {
     throw error
   }
 }
+
+export const deleteBookmarkedCard = async _id => {
+  try {
+    const response = await fetch(`api/bookmarkedCards?cardid=${_id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    if (response.ok) {
+      const success = await response.json()
+      return success
+    }
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

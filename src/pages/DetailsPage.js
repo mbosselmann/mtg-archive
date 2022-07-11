@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { StyledHeart } from '../components/icons/Heart.js'
 import { ArrowIcon } from '../components/icons/ArrowIcon.js'
 import styled from 'styled-components'
-import { saveBookmarkedCard } from '../services/bookmarks.js'
 
 export default function DetailsPage({ data, savedCards, onSaveCard }) {
   const [card, setCard] = useState({})
@@ -16,9 +15,6 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
 
   function handleBookmarkClick(_id) {
     onSaveCard(_id)
-    if (isBookmarked) {
-      saveBookmarkedCard(card)
-    }
     setIsBookmarked(!isBookmarked)
   }
 
