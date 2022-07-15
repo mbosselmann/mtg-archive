@@ -7,8 +7,14 @@ export default {
 
 const Template = args => <Colors {...args} />
 
-export const Default = Template.bind({})
+export const ColorButtons = Template.bind({})
+ColorButtons.args = {
+  component: 'button',
+  colors: ['White', 'Red', 'Blue', 'Green', 'Black'],
+}
 
-Default.args = {
+export const ColorCircles = Template.bind({})
+ColorCircles.args = {
+  component: 'div',
   colors: ['White', 'Red', 'Blue', 'Green', 'Black'],
 }
