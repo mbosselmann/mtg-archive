@@ -19,7 +19,7 @@ export default function CardDetails({ card }) {
 
   return (
     <Container color={colors ? colors[0] : ''}>
-      <Img src={image} alt="Card" />
+      <Img src={image} alt={`Image of card: ${name}`} />
       <Wrapper>
         <Title>{name}</Title>
         {colors && <Colors colors={colors} />}
@@ -75,7 +75,7 @@ export default function CardDetails({ card }) {
   )
 }
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
