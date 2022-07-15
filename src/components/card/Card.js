@@ -5,7 +5,7 @@ import { Img } from '../styles/Image.js'
 
 export default function Card({ name, _id, image, colors, rarity, power }) {
   return (
-    <Link to={`/${_id}`}>
+    <LinkContainer to={`/${_id}`}>
       <ListItem color={colors ? colors[0] : ''}>
         {colors && (
           <ColorsContainer>
@@ -23,7 +23,7 @@ export default function Card({ name, _id, image, colors, rarity, power }) {
           </li>
         </List>
       </ListItem>
-    </Link>
+    </LinkContainer>
   )
 }
 
@@ -67,4 +67,7 @@ const List = styled.ul`
     font-weight: bold;
     margin-right: 10px;
   }
+`
+const LinkContainer = styled(Link)`
+  text-decoration: none;
 `
