@@ -13,18 +13,7 @@ describe('Search', () => {
     expect(button).toBeInTheDocument()
   })
 
-  it("won't submit form if input field is left empty", () => {
-    const getCard = jest.fn()
-
-    render(<Search getCard={getCard} />)
-
-    const button = screen.getByRole('button', { name: /search/i })
-    userEvent.click(button)
-
-    expect(getCard).not.toHaveBeenCalledTimes(1)
-  })
-
-  it('submits form if input field is filled out', async () => {
+  it('submits form content after entering a search query', async () => {
     const getCard = jest.fn()
 
     render(<Search getCard={getCard} />)
