@@ -16,8 +16,8 @@ describe('Card', () => {
       </MemoryRouter>
     )
 
-    const card = screen.getByRole('listitem')
-    expect(card).toBeInTheDocument()
+    const card = screen.getAllByRole('listitem')
+    expect(card[0]).toBeInTheDocument()
 
     const heading = screen.getByRole('heading', { name: 'Archbishop Oink' })
     expect(heading).toBeInTheDocument()
