@@ -1,8 +1,7 @@
 import CardDetails from '../components/card/CardDetails'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import ActionContainer from '../components/action/ActionContainer'
-import { Link } from 'react-router-dom'
 import { StyledHeart } from '../components/icons/Heart.js'
 import { ArrowIcon } from '../components/icons/ArrowIcon.js'
 import styled from 'styled-components'
@@ -11,6 +10,7 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
   const [card, setCard] = useState({})
   const [cards, setCards] = useState([])
   const [isBookmarked, setIsBookmarked] = useState(false)
+  const navigate = useNavigate()
   const { _id } = useParams()
 
   function handleBookmarkClick(_id) {
@@ -43,9 +43,9 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
         <>
           <Title color={card.colors ? card.colors[0] : ''}>Card Details</Title>
           <ActionContainer>
-            <BackLink to="/">
+            <BackButton onClick={() => navigate(-1)}>
               <ArrowIcon />
-            </BackLink>
+            </BackButton>
             <Button
               onClick={() => handleBookmarkClick(_id)}
               isBookmarked={isBookmarked}
@@ -96,7 +96,8 @@ const Button = styled.button`
   }
 `
 
-const BackLink = styled(Link)`
+const BackButton = styled.button`
+  border: none;
   display: flex;
   flex: 5;
   gap: 10px;
