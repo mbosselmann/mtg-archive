@@ -1,35 +1,33 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Colors from '../circles/Colors'
 import { Img } from '../styles/Image.js'
 
 export default function Card({ name, _id, image, colors, rarity, power }) {
-  const navigate = useNavigate()
   return (
-    <Article
-      color={colors ? colors[0] : ''}
-      onClick={() => navigate(`/${_id}`)}
-    >
-      {colors && (
-        <ColorsContainer>
-          <Colors colors={colors} />
-        </ColorsContainer>
-      )}
-      <h2>{name}</h2>
-      <Img src={image} alt="card" />
-      <List role="list">
-        <li>
-          <span>Rarity:</span> {rarity}
-        </li>
-        <li>
-          <span>Power:</span> {power}
-        </li>
-      </List>
-    </Article>
+    <Link to={`/${_id}`}>
+      <ListItem color={colors ? colors[0] : ''}>
+        {colors && (
+          <ColorsContainer>
+            <Colors colors={colors} />
+          </ColorsContainer>
+        )}
+        <h2>{name}</h2>
+        <Img src={image} alt="card" />
+        <List role="list">
+          <li>
+            <span>Rarity:</span> {rarity}
+          </li>
+          <li>
+            <span>Power:</span> {power}
+          </li>
+        </List>
+      </ListItem>
+    </Link>
   )
 }
 
-const Article = styled.li`
+const ListItem = styled.li`
   color: var(--text-color);
   list-style: none;
   border-radius: 5px;
