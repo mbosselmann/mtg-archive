@@ -4,6 +4,7 @@ import ActionContainer from '../components/action/ActionContainer'
 import Filter from '../components/filter/Filter.js'
 import Button from '../components/styles/Button.js'
 import { Text } from '../components/styles/Text.js'
+import { TrashIcon } from '../components/icons/TrashIcon.js'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
@@ -37,7 +38,7 @@ export default function BookmarksPage({ savedCards, onRemoveAllBookmarks }) {
             setFilteredCards([])
           }}
         >
-          Remove all Bookmarks
+          <TrashIcon />
         </DeleteButton>
       </ActionContainer>
       {filteredCards?.length > 0 ? (
@@ -81,6 +82,7 @@ const List = styled.ul`
 
 const DeleteButton = styled(Button)`
   border-radius: 0;
+  padding: 0 25px;
   background-color: var(--secondary-color);
   color: var(--text-color);
 `
