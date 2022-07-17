@@ -10,6 +10,7 @@ import {
   getBookmarkedCards,
   saveBookmarkedCard,
   deleteBookmarkedCard,
+  deleteAllBookmarkedCards,
 } from './services/bookmarks.js'
 
 function App() {
@@ -95,12 +96,8 @@ function App() {
   }
 
   function removeAllBookmarks() {
-    setSavedCards(
-      savedCards.map(card => {
-        const newCard = { ...card, isBookmarked: false }
-        return newCard
-      })
-    )
+    deleteAllBookmarkedCards()
+    setSavedCards([])
   }
 
   useEffect(() => {

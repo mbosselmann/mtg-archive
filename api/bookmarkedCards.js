@@ -27,9 +27,14 @@ const handler = async (request, response) => {
         .status(200)
         .json({ message: 'Ok', card: newBookmarkedCard })
     } else if (request.method === 'DELETE') {
-      const searchTerm = request.query.cardid
-      const deletedCard = await BookmarkedCard.findOneAndDelete(searchTerm)
-      return response.json(deletedCard)
+      if (request.query.cardid) {
+        const searchTerm = request.query.cardid
+        const deletedCard = await BookmarkedCard.findOneAndDelete(searchTerm)
+        return response.json(deletedCard)
+      } else {
+        const deleteAllCards = await BookmarkedCard.deleteMany({})
+        return response.json(deleteAllCards)
+      }
     } else {
       throw new Error()
     }
