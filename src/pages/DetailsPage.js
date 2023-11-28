@@ -13,7 +13,7 @@ export default function DetailsPage({ data, savedCards, onSaveCard }) {
   const navigate = useNavigate()
   const { _id } = useParams()
 
-  console.log('Hello World 2!')
+  console.log('Hello World 3!')
 
   function handleBookmarkClick(_id) {
     onSaveCard(_id)
